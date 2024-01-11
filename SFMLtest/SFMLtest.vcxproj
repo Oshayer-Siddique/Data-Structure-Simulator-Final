@@ -139,7 +139,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BST.cpp" />
+    <ClCompile Include="bubblesort.cpp" />
+    <ClCompile Include="DataStructure.cpp" />
+    <ClCompile Include="Deque.cpp" />
+    <ClCompile Include="Heapsort.cpp" />
+    <ClCompile Include="Insertionsort.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="Stack.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BST.h" />
+    <ClInclude Include="bubblesort.h" />
+    <ClInclude Include="DataStructure.h" />
+    <ClInclude Include="Deque.h" />
+    <ClInclude Include="Heapsort.h" />
+    <ClInclude Include="Insertionsort.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="Stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
