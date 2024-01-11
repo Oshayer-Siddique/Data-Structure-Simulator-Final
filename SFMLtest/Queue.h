@@ -33,6 +33,7 @@ private:
     void drawQueue();
     void updateQueueText();
     void updateEnqueueMovement();
+    void updateDequeueMovement();
 	
 };
 

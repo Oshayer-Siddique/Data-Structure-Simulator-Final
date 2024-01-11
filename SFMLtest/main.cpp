@@ -45,14 +45,11 @@ int main() {
 	//DataStructureSimulator* ds;
 	//ds = new LinkedListSimulator;
 
-
-	
-
+	//DataStructureSimulator ds;
+	//HeapSortSimulation is(ds.getInputArray());
+	//is.run();
 
 
 
 }
-
-
-
 

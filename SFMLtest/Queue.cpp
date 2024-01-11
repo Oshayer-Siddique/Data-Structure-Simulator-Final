@@ -59,9 +59,10 @@ void QueueSimulator::render() {
  
     drawQueue();
 
-    //window.draw(movingRectangle);
+    window.draw(movingRectangle);
     window.draw(queueText);
-    //updateEnqueueMovement();
+    updateEnqueueMovement();
+    updateDequeueMovement();
 
   
     
@@ -72,16 +73,17 @@ void QueueSimulator::render() {
 void QueueSimulator::enqueueElement() {
 
     int x; 
-    cout << "Enter number for Push : " << endl;
-    cin >> x;
-    int newElement = x;
+    //cout << "Enter number for Push : " << endl;
+
+    //cin >> x;
+    int newElement = rand() % 100;
     myQueue.push(newElement);
     counter++;
 
      //Set up the moving rectangle
      movingRectangle.setSize(sf::Vector2f(RECTANGLE_WIDTH, RECTANGLE_HEIGHT));
      movingRectangle.setFillColor(sf::Color::Green);
-     movingRectangle.setPosition(0, 0);
+     //movingRectangle.setPosition(0, 0);
 
      //movementDistance = QUEUE_Y;
      //pushAnimationClock.restart();
@@ -111,7 +113,7 @@ void QueueSimulator::drawQueue() {
     //    tempQueue.pop();
     //}
 
-    while (!tempQueue.empty()) {
+    while (tempQueue.size() > 1) {
         sf::RectangleShape rectangle(sf::Vector2f(RECTANGLE_WIDTH, RECTANGLE_HEIGHT));
         rectangle.setFillColor(sf::Color::Blue);
         rectangle.setPosition(startX, QUEUE_Y);
@@ -181,47 +183,49 @@ void QueueSimulator::updateEnqueueMovement() {
     if (!myQueue.empty()) {
         string s = to_string(myQueue.back());
 
-        cout << s << endl;
+        //cout << s << endl;
 
         Text a;
         a.setFont(font);
         a.setCharacterSize(15);
-        a.setFillColor(Color::Red);
+        a.setFillColor(Color::Black);
         a.setString(s);
 
         startX += (RECTANGLE_WIDTH+5) * counter;
-
-
-        //cout << startX << endl;
-
-        
-
-        
-        
-        if (movementDistance >= 0) {
-            float deltaTime = pushAnimationClock.restart().asSeconds();
-            movementDistance -= MOVEMENT_SPEED * deltaTime;
-            movingRectangle.setPosition(startX - 55, QUEUE_Y);
-        }
-
-        
-
-
+        movingRectangle.setPosition(startX-55, QUEUE_Y);
 
         a.setPosition(movingRectangle.getPosition().x + 15, movingRectangle.getPosition().y);
         //a.setPosition(startX - 50, QUEUE_Y);
-        cout << a.getPosition().x << endl;
+        //cout << a.getPosition().x << endl;
         window.draw(a);
     }
 }
 
 
 
-// void QueueSimulator::updateDequeueMovement() {
-//     if (movementDistance < QUEUE_X) {
-//         float deltaTime = popAnimationClock.restart().asSeconds();
-//         movementDistance += MOVEMENT_SPEED * deltaTime;
-//         movingRectangle.setPosition(movementDistance, QUEUE_Y);
-//     }
-// }
+ void QueueSimulator::updateDequeueMovement() {
+     int startX = QUEUE_X;
+     if (myQueue.size() > 0) {
+         string s = to_string(myQueue.back());
+
+         cout << s << endl;
+
+         Text a;
+         a.setFont(font);
+         a.setCharacterSize(15);
+         a.setFillColor(Color::Black);
+         a.setString(s);
+
+
+         int qs = myQueue.size();
+
+         startX += (RECTANGLE_WIDTH + 5) * qs;
+         movingRectangle.setPosition(startX - 55, QUEUE_Y);
+
+         a.setPosition(movingRectangle.getPosition().x + 15, movingRectangle.getPosition().y);
+         //a.setPosition(startX - 50, QUEUE_Y);
+         //cout << a.getPosition().x << endl;
+         window.draw(a);
+     }
+ }
 
